@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Documentation</title>
+	</head>
+	<body>
+		<header>
+			<h1>Documentations guide to ... myCinemovieApp</h1>
+		</header>
+		<main>
+			<div class="objective">
+				<h2>Objective</h2>
+				<p>This app is created to build and use the server side functions of an internet application.</p>
+				<p>The documentation explains the individual functions and modules as well as their functionality with which the app is built. The app will give the user the possibility to access information about different movies, directors and actors. The user will also be able to log in to the app and enter personal information, change it and create a  list of their favourite films.</p>
+			</div>
+			<div class="context">
+				<h2>Context</h2>
+				<p>It’s no longer enough for a JavaScript developer to be skilled in frontend development alone. It’s become essential that you be able to interface with (as you did in Achievement 1) and even create your own APIs. For this reason, throughout this Achievement, you’ll create a REST API for an application called “myFlix” that interacts with a database that stores data about different movies.
+					In the next Achievement, you’ll build the client-side component of this same application using REACT. By the end of Achievement 3, you’ll have a complete web application (client-side and server-side) built using full-stack JavaScript technologies that you can showcase in your portfolio. The project will demonstrate your mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication, data security, and more. The complete tech stack you’ll master is known as the MERN (MongoDB, Express, React, and Node.js) stack.
+					Note that it’s not a requirement that you name your application “myFlix.” You’re also free to decide which movies you wish to include in your project. For example, you may want to build a movie application specifically for period or superhero movies, or a more diverse application with a wider user base. It’s up to you!</p>
+			</div>
+			<div class="the5ws">
+				<h2>The 5 Ws</h2>
+				<ul>
+					<li>Who—Your immediate users will be frontend developers who’ll work on the client-side for the application based on what’s been documented on the server-side (in this case, this developer is also you!). You should also consider the users of the myFlix application. These will be movie enthusiasts who enjoy reading information about different movies.</li>
+					<li>What—The complete server-side of your web application, including the server, business logic, and business layers of the application. It will consist of a well-designed REST API and architected database built using JavaScript, Node.js, Express, and MongoDB. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from your database and store that data in a non-relational way.</li>
+					<li>When—Whenever users of myFlix are interacting with the application, the server-side of the application will be in use, processing their requests and performing operations against the data in the database. These users will be able to use the myFlix application whenever they like to read information about different movies or update their user information, for instance, their list of “Favorite Movies.”</li>
+					<li>Where—The application will be hosted online. The myFlix application itself is responsive and can therefore be used anywhere and on any device, giving all users the same experience.</li>
+					<li>Why—Movie enthusiasts want to be able to access information about different movies, directors, and genres. The server-side of the myFlix application will ensure they have access to this information, that their requests can be processed, and that all necessary data can be stored.</li>
+				</ul>
+			</div>
+			<div class="designcriteria">
+				<h2>Design Criteria</h2>
+				<h3>User Stories</h3>
+				<ul>
+					<li>As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.</li>
+					<li>As a user, I want to be able to create a profile so I can save data about my favorite movies.</li>
+				</ul>
+				<h3>Feature Requirements</h3>
+				<h4>Essential Features</h4>
+				<ul>
+					<li>Return a list of ALL movies to the user</li>
+					<li>Return data (description, genre, director, image URL, whether it’s featured or not) about a
+						single movie by title to the user</li>
+					<li>Return data about a genre (description) by name/title (e.g., “Thriller”)</li>
+					<li>Return data about a director (bio, birth year, death year) by name</li>
+					<li>Allow new users to register</li>
+					<li>Allow users to update their user info (username, password, email, date of birth)</li>
+					<li>Allow users to add a movie to their list of favorites</li>
+					<li>Allow users to remove a movie from their list of favorites</li>
+					<li>Allow existing users to deregister</li>
+				</ul>
+				<h4>Optional Features</h4>
+				<ul>
+					<li>Allow users to see which actors star in which movies</li>
+					<li>Allow users to view information about different actors</li>
+					<li>Allow users to view more information about different movies, such as the release date and
+						the movie rating</li>
+					<li>Allow users to create a “To Watch” list in addition to their “Favorite Movies” list</li>
+				</ul>
+				<h3>Technical Requirements</h3>
+				<ul>
+					<li>The API must be a Node.js and Express application.</li>
+					<li>The API must use REST architecture, with URL endpoints corresponding to the data
+						operations listed above</li>
+					<li>The API must use at least three middleware modules, such as the body-parser package for
+						reading data from requests and morgan for logging.</li>
+					<li>The API must use a “package.json” file.</li>
+					<li>The database must be built using MongoDB.</li>
+					<li>The business logic must be modeled with Mongoose./li>
+					<li>The API must provide movie information in JSON format.</li>
+					<li>The JavaScript code must be error-free.</li>
+					<li>The API must be tested in Postman.</li>
+					<li>The API must include user authentication and authorization code.</li>
+					<li>The API must include data validation logic./li>
+					<li>The API must meet data security regulations.</li>
+					<li>The API source code must be deployed to a publicly accessible platform like GitHub.</li>
+					<li>The API must be deployed to Heroku.</li>
+				</ul>
+			</div>
+			<div class="projectdeliverables">
+				<h2>Project Deliverables</h2>
+				<h3>Exercise 1: Intro to Server-Side Programming</h3>
+				<ul>
+					<li>Set up your project directory</li>
+				</ul>
+				<h3>Exercise 2: Node.js Modules</h3>
+				<ul>
+					<li>Practice writing Node.js syntax</li>
+				</ul>
+				<h3>Exercise 3: Packages & Package Managers</h3>
+				<ul>
+					<li>Create a “package.json” file</li>
+					<li>Import all necessary packages into project directory</li>
+					<li>Define your project dependencies</li>
+				</ul>
+				<h3>Exercise 4: Web Server Frameworks & Express</h3>
+				<ul>
+					<li>Route HTTP requests for your project using Express</li>
+				</ul>
+				<h3>Exercise 5: REST & API Endpoints</h3>
+				<ul>
+					<li>Define the endpoints for your REST API</li>
+				</ul>
+				<h3>Exercise 6: Relational Databases & SQL</h3>
+				<ul>
+					<li>Create a relational (SQL) database for storing movie data using PostgreSQL</li>
+				</ul>
+				<h3>Exercise 7: Non-Relational Databases & MongoDB</h3>
+				<ul>
+					<li>Recreate your relational (SQL) database as a non-relational (NoSQL) database using MongoDB</li>
+				</ul>
+				<h3>Exercise 8: The Business Logic Layer</h3>
+				<ul>
+					<li>Model your business logic using Mongoose</li>
+				</ul>
+				<h3>Exercise 9: Authentication & Authorization</h3>
+				<ul>
+					<li>Implement authentication and authorization into your API using basic HTTP authentication and JWT (token-based) authentication</li>
+				</ul>
+				<h3>Exercise 10: Data Security, Validation, & Ethics</h3>
+				<ul>
+					<li>Incorporate data validation logic into your API</li>
+					<li>Implement data security and storage controls</li>
+					<li>Host your project on the web using Heroku</li>
+				</ul>
+			</div>			
+		</main>
+		<footer></footer>
+	</body>
+</html>
