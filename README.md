@@ -16,6 +16,8 @@ This Project uses:
 - Node.js
 - Express
 
+## Documentation - Link: https://github.com/sulfidate/myCinemovieApp/blob/main/public/documentation.html
+
 
 ## Feature Requirements
 ### Essential Features
