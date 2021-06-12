@@ -78,18 +78,18 @@ app.get('/movies', (req, res) => {
 	res.json(topMovies);
 });
 
-// Return data about a single movie by title to the user
+// Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
 app.get('/movies/:title', (req, res) => {
 	res.json(topMovies.find((movie) => 
 		{ return movie.title === req.params.title }));
 });
 
-// Return data about a genre by title
+// Return data about a genre (description) by title
 app.get('/movies/genres/:title', (req, res) => {
 	res.send('Successful GET request returning data about the genre of a single movie');
 });
 
-// Return data about a director by name
+// Return data about a director (bio, birth year, death year) by name
 app.get('/movies/directors/:name', (req, res) => {
 	res.send('Successful GET request returning data about a director by name')
 	});
@@ -99,7 +99,7 @@ app.post('/users', (req, res) => {
 	res.send('Successful POST request allow new user to register');
 });
 
-// Allow users to update their user info
+// Allow users to update their user info (username)
 app.put('/users/:username', (req, res) => {
 	res.send('Successful PUT request allows users to update user-info');
 });

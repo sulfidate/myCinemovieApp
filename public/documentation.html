@@ -4,29 +4,59 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Documentation</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous">
 		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			
+			html {
+				height: 100%;
+			}
+			
+			body {
+				height: 100%;
+				/* max-width: 90%; */
+				padding: 30px;
+				background-color: #f5f8f8;
+				color: #2b2b2b;
+				font-family: 'lato', sans-serif;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 1.6;
+			}
+			
+			header {
+				text-align: center;
+			}
+			
 			h2, h3 {
 				padding-top: 10px;
 			}
+			
 			.green {
 				color: green;
 			}
-			div.table-wrapper {
-				width: auto;
+
+			table {
+				margin: 10px;
+				max-width: 85%;
 			}
 			table, th, td {
 				border: 1px solid black;
 				border-collapse: collapse;
 				text-align: left;
 				padding: 15px;
-				width: 85%;
 			}
 			th {
-				height: 70px;
+				background-color: lightslategrey;
+				color: whitesmoke;
 			}
-			td {
-				height: 50px;
-				min-width: 100px;
+			tr:hover {
+				background-color: lightsteelblue;
 			}
 		</style>
 	</head>
@@ -35,12 +65,9 @@
 			<h1>Documentation | myCinemovieApp</h1>
 		</header>
 		<main>
-			<div class="objective">
 				<h2>Objective</h2>
 				<p>This app is created to build and use the server side functions of an internet application.</p>
 				<p>The documentation explains the individual functions and modules as well as their functionality with which the app is built. The app will give the user the possibility to access information about different movies, directors and actors. The user will also be able to log in to the app and enter personal information, change it and create a list of their favourite films.</p>
-			</div>
-			<div class="designcriteria">
 				<h2>Design Criteria</h2>
 				<h3>User Stories</h3>
 				<ul>
@@ -61,7 +88,6 @@
 					<li>Allow users to remove a movie from their list of favorites</li>
 					<li>Allow existing users to deregister</li>
 				</ul>
-				<div class="table-wrapper">
 					<h3>Endpoints for REST API</h3>
 					<table>
 						<tr style="font-weight: 800;">
@@ -83,12 +109,13 @@
 							<td>/movies/[title]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about a single movie, containing the movie title, the directors name and the genre.<br>
-							<span class="green">Example:{
-								title: 'The Godfather',
-								director: 'Francis Ford Coppola',
+							<td>A JSON object holding Data about a single movie, containing the movie title, the directors name and the genre.<br/>
+							Example:
+							<span class="green">
+								{ title: 'The Godfather',<br/>
+								director: 'Francis Ford Coppola',<br/>
 								genre: 'thriller' }
-						</span><br>
+						</span><br/>
 							</td>
 						</tr>
 						<tr>
@@ -96,9 +123,9 @@
 							<td>/genre/[title]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about the genre of a single movie Like:<span class="green">Example:{
-								title: 'The Godfather',
-								director: 'Francis Ford Coppola',
+							<td>A JSON object holding Data about the genre of a single movie.<br/>Example: <span class="green">{
+								title: 'The Godfather',<br/>
+								director: 'Francis Ford Coppola',<br/>
 								genre: 'thriller' }</span>
 							</td>
 						</tr>
@@ -107,36 +134,42 @@
 							<td>/directors/[name]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about a director <span class="green">Example:{ name: 'The Director', bio: 'Infos about the director', birthYear: '####', deathYear: '####' }</span>
+							<td>A JSON object holding Data about a director.<br/>Example: <span class="green">{ name: 'The Director',<br/>bio: 'Infos about the director',<br/>birthYear: '####', <br/>deathYear: '####' }</span>
 							</td>
 						</tr>
 						<tr>
 							<td>Allow new users to register</td>
 							<td>/users</td>
 							<td>POST</td>
-							<td>A JSON object holding data about the user to register, structured like:<span class="green"> { name: 'First User' }</span></td>
-							<td>A JSON object holding data about the user to register, structured like: <span class="green">{ id: '001', name: 'First User' }</span></td>
+							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green"> { name: 'First User' }</span></td>
+							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '###', <br/>name: 'First User' }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to update their user info (username)</td>
 							<td>/users/[username]</td>
 							<td>PUT</td>
 							<td>None</td>
-							<td>A text message indicating that user infos has been updated</td>
+							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '###', name: 'Updated Username' }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
 							<td>/users/movies/[favorites]</td>
-							<td>PUT</td>
+							<td>PATCH</td>
 							<td>None</td>
-							<td>A text message indicating that a movie was added</td>
+							<td>A JSON object contains data about the movie add to the list.<br/>Example: <span class="green">{
+								title: 'The Godfather',
+								director: 'Francis Ford Coppola',
+								genre: 'thriller' }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
 							<td>/users/movies/[favorites]</td>
 							<td>DELETE</td>
 							<td>None</td>
-							<td>A text message indicating whether the movie was successfully removed from favorites</td>
+							<td>A JSON object contains data about the movie remove from the list.<br/>Example: <span class="green">{
+								title: 'The Godfather',
+								director: 'Francis Ford Coppola',
+								genre: 'thriller' }</span></td>
 						</tr>
 						<tr>
 							<td>Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
@@ -146,7 +179,6 @@
 							<td>A text message indicating whether the user and e-mail address was successfully deregistered</td>
 						</tr>
 					</table>
-				</div>
 				<h4>Optional Features</h4>
 				<ul>
 					<li>Allow users to see which actors star in which movies</li>
@@ -174,70 +206,18 @@
 					<li>The API source code must be deployed to a publicly accessible platform like GitHub.</li>
 					<li>The API must be deployed to Heroku.</li>
 				</ul>
-			</div>
-			<!-- <div class="projectdeliverables">
-				<h2>Project Deliverables</h2>
-				<h3>Exercise 1: Intro to Server-Side Programming</h3>
-				<ul>
-					<li>Set up your project directory</li>
-				</ul>
-				<h3>Exercise 2: Node.js Modules</h3>
-				<ul>
-					<li>Practice writing Node.js syntax</li>
-				</ul>
-				<h3>Exercise 3: Packages & Package Managers</h3>
-				<ul>
-					<li>Create a “package.json” file</li>
-					<li>Import all necessary packages into project directory</li>
-					<li>Define your project dependencies</li>
-				</ul>
-				<h3>Exercise 4: Web Server Frameworks & Express</h3>
-				<ul>
-					<li>Route HTTP requests for your project using Express</li>
-				</ul>
-				<h3>Exercise 5: REST & API Endpoints</h3>
-				<ul>
-					<li>Define the endpoints for your REST API</li>
-				</ul>
-				<h3>Exercise 6: Relational Databases & SQL</h3>
-				<ul>
-					<li>Create a relational (SQL) database for storing movie data using PostgreSQL</li>
-				</ul>
-				<h3>Exercise 7: Non-Relational Databases & MongoDB</h3>
-				<ul>
-					<li>Recreate your relational (SQL) database as a non-relational (NoSQL) database using MongoDB</li>
-				</ul>
-				<h3>Exercise 8: The Business Logic Layer</h3>
-				<ul>
-					<li>Model your business logic using Mongoose</li>
-				</ul>
-				<h3>Exercise 9: Authentication & Authorization</h3>
-				<ul>
-					<li>Implement authentication and authorization into your API using basic HTTP authentication and JWT (token-based) authentication</li>
-				</ul>
-				<h3>Exercise 10: Data Security, Validation, & Ethics</h3>
-				<ul>
-					<li>Incorporate data validation logic into your API</li>
-					<li>Implement data security and storage controls</li>
-					<li>Host your project on the web using Heroku</li>
-				</ul>
-			</div> -->
-			<div class="context">
 				<h2>Context</h2>
 				<p>It’s no longer enough for a JavaScript developer to be skilled in frontend development alone. It’s become essential that you be able to interface with (as you did in Achievement 1) and even create your own APIs. For this reason, throughout this Achievement, you’ll create a REST API for an application called “myFlix” that interacts with a database that stores data about different movies.
 					In the next Achievement, you’ll build the client-side component of this same application using REACT. By the end of Achievement 3, you’ll have a complete web application (client-side and server-side) built using full-stack JavaScript technologies that you can showcase in your portfolio. The project will demonstrate your mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication, data security, and more. The complete tech stack you’ll master is known as the MERN (MongoDB, Express, React, and Node.js) stack.
 					Note that it’s not a requirement that you name your application “myFlix.” You’re also free to decide which movies you wish to include in your project. For example, you may want to build a movie application specifically for period or superhero movies, or a more diverse application with a wider user base. It’s up to you!</p>
-			</div>
-			<div class="the5ws">
 				<h2>The 5 Ws</h2>
 				<ul>
 					<li>Who—Your immediate users will be frontend developers who’ll work on the client-side for the application based on what’s been documented on the server-side (in this case, this developer is also you!). You should also consider the users of the myFlix application. These will be movie enthusiasts who enjoy reading information about different movies.</li>
 					<li>What—The complete server-side of your web application, including the server, business logic, and business layers of the application. It will consist of a well-designed REST API and architected database built using JavaScript, Node.js, Express, and MongoDB. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from your database and store that data in a non-relational way.</li>
 					<li>When—Whenever users of myFlix are interacting with the application, the server-side of the application will be in use, processing their requests and performing operations against the data in the database. These users will be able to use the myFlix application whenever they like to read information about different movies or update their user information, for instance, their list of “Favorite Movies.”</li>
 					<li>Where—The application will be hosted online. The myFlix application itself is responsive and can therefore be used anywhere and on any device, giving all users the same experience.</li>
-					<li>Why—Movie enthusiasts want to be able to access information about different movies, directors, and genres. The server-side of the myFlix application will ensure they have access to this information, that their requests can be processed, and that all necessary data can be stored.</li>
+					<li>Why—Movie enthusiasts want to be able to access information about different movies, directors, and genres. The server-side of the myFlix application will ensure they have access to this information, that their requests can be processed, and that all necessary data can be stored.<br/><br/></li>
 				</ul>
-			</div>			
 		</main>
 		<footer></footer>
 	</body>
