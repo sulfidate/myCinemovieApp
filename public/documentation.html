@@ -149,7 +149,7 @@
 						</tr>
 						<tr>
 							<td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
-							<td>/users/movies/[favorites]</td>
+							<td>/users/[username]/favorites/[title]</td>
 							<td>PATCH</td>
 							<td>None</td>
 							<td>A JSON object contains data about the movie add to the list.<br/>Example: <span class="green">{
@@ -159,7 +159,7 @@
 						</tr>
 						<tr>
 							<td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
-							<td>/users/movies/[favorites]</td>
+							<td>/users/[username]/favorites/[title]</td>
 							<td>DELETE</td>
 							<td>None</td>
 							<td>A JSON object contains data about the movie remove from the list.<br/>Example: <span class="green">{

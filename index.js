@@ -105,13 +105,13 @@ app.put('/users/:username', (req, res) => {
 });
 	
 // Allow users to add a movie to their list of favorites
-app.patch('/users/movies/:favorites', (req, res) => {
+app.patch('/users/:username/favorites/:title', (req, res) => {
 	let userFavorite = topMovies.find((movie) => 
 	res.send('Movie added to favorites'));
 });
 
 // Allow users to remove a movie from their list of favorites
-app.delete('/users/movies/:favorites', (req, res) => {
+app.delete('/users/:username/favorites/:title', (req, res) => {
 	let userFavorite = topMovies.find((movie) => 
 	res.send('Movie deleted from favorites'));
 });
