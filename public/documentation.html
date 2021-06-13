@@ -120,18 +120,14 @@
 						</tr>
 						<tr>
 							<td>Return data about a genre (description) by title</td>
-							<td>/genre/[title]</td>
+							<td>/movies/genre/[title]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about the genre of a single movie.<br/>Example: <span class="green">{
-								title: 'The Godfather',<br/>
-								director: 'Francis Ford Coppola',<br/>
-								genre: 'thriller' }</span>
-							</td>
+							<td>A JSON object holding Data about the genre of a single movie.<br/>Example: <span class="green">{genre: 'thriller' }</span></td>
 						</tr>
 						<tr>
 							<td>Return data about a director (bio, birth year, death year) by name</td>
-							<td>/directors/[name]</td>
+							<td>/movies/directors/[name]</td>
 							<td>GET</td>
 							<td>None</td>
 							<td>A JSON object holding Data about a director.<br/>Example: <span class="green">{ name: 'The Director',<br/>bio: 'Infos about the director',<br/>birthYear: '####', <br/>deathYear: '####' }</span>
