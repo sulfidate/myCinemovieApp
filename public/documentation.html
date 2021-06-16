@@ -102,7 +102,7 @@
 							<td>/movies</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about all the movies</td>
+							<td>A JSON object holding Data about all the movies.</td>
 						</tr>
 						<tr>
 							<td>Return data (description, genre, director, image URL, whether it’s featured or not)   about a single movie by title to the user</td>
@@ -111,65 +111,67 @@
 							<td>None</td>
 							<td>A JSON object holding Data about a single movie, containing the movie title, the directors name and the genre.<br/>
 							Example:
-							<span class="green">
-								{ title: 'The Godfather',<br/>
-								director: 'Francis Ford Coppola',<br/>
-								genre: 'thriller' }
-						</span><br/>
+							<span class="green"><br/>
+								{ Title: 'The Godfather',<br/>
+								Description: 'The Godfather is ...',<br/>
+								Genre: { Name:'Thriller', Description: 'Thriller is ...' }<br/>
+								Director: { Name: 'Francis Ford Coppola', Bio: '...', Birth: '1939-04-07', Death: '',<br/>
+								ImagePath: 'img/Godfather.jpg'<br/>
+								Featured: [boolean] }</span><br/>
 							</td>
 						</tr>
 						<tr>
 							<td>Return data about a genre (description) by title</td>
-							<td>/movies/genre/[title]</td>
+							<td>/movies/Genre.Name/[title]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about the genre of a single movie.<br/>Example: <span class="green">{genre: 'thriller' }</span></td>
+							<td>A JSON object holding Data about the genre of a single movie.<br/>Example: <span class="green">{ Genre: { Name: 'Thriller', Description: 'Thriller is ...' }}</span></td>
 						</tr>
 						<tr>
 							<td>Return data about a director (bio, birth year, death year) by name</td>
-							<td>/movies/directors/[name]</td>
+							<td>/movies/Director.Name/[name]</td>
 							<td>GET</td>
 							<td>None</td>
-							<td>A JSON object holding Data about a director.<br/>Example: <span class="green">{ name: 'The Director',<br/>bio: 'Infos about the director',<br/>birthYear: '####', <br/>deathYear: '####' }</span>
+							<td>A JSON object holding Data about a director.<br/>Example: <span class="green">{ Director: { Name: 'Francis Ford Coppola', Bio: '...' , Birth: '1939-04-07' , Death: '' }</span><br/> 
 							</td>
 						</tr>
 						<tr>
 							<td>Allow new users to register</td>
-							<td>/users</td>
+							<td>/users/[Username]</td>
 							<td>POST</td>
 							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green"> { name: 'First User' }</span></td>
-							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '###', <br/>name: 'First User' }</span></td>
+							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '_##', <br/>Username: 'First User', Password: 'password-1',
+							Email: 'first@user.xx',
+							Birthday: '####-##-##',
+							FavoriteMovies: [ x, xx ] }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to update their user info (username)</td>
-							<td>/users/[username]</td>
+							<td>/users/[Username]</td>
 							<td>PUT</td>
 							<td>None</td>
-							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '###', name: 'Updated Username' }</span></td>
+							<td>A JSON object holding data about the user to register, structured <br/>like: <span class="green">{ id: '_##', <br/>Username: 'Updated Username', Password: 'password-1',
+							Email: 'first@user.xx',
+							Birthday: '####-##-##',
+							FavoriteMovies: [ x, xx ] }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
-							<td>/users/[username]/favorites/[title]</td>
+							<td>/users/[Username]/FavoriteMovies/[title]</td>
 							<td>PATCH</td>
 							<td>None</td>
-							<td>A JSON object contains data about the movie add to the list.<br/>Example: <span class="green">{
-								title: 'The Godfather',
-								director: 'Francis Ford Coppola',
-								genre: 'thriller' }</span></td>
+							<td>A JSON object contains data about the movie add to the list.<br/>Example: <span class="green">{FavoriteMovies : # }</span></td>
 						</tr>
 						<tr>
 							<td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
-							<td>/users/[username]/favorites/[title]</td>
+							<td>/users/[Username]/FavoriteMovies/[title]</td>
 							<td>DELETE</td>
 							<td>None</td>
-							<td>A JSON object contains data about the movie remove from the list.<br/>Example: <span class="green">{
-								title: 'The Godfather',
-								director: 'Francis Ford Coppola',
-								genre: 'thriller' }</span></td>
+							<td>A JSON object contains data about the movie remove from the list.<br/>Example: <span class="green">{{FavoriteMovies : # }</span></td>
 						</tr>
 						<tr>
 							<td>Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
-							<td>/users/[username]</td>
+							<td>/users/[Username]</td>
 							<td>DELETE</td>
 							<td>None</td>
 							<td>A text message indicating whether the user and e-mail address was successfully deregistered</td>

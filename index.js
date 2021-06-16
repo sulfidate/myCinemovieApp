@@ -29,7 +29,12 @@ let topMovies = [
 	{
 		title: 'The Breakfast Club',
 		director: 'John Huges',
-		genre: 'cult'
+		genre: 'coming of age'
+	},
+	{
+		title: "Ferris Bueller's Day Off",
+		director: 'John Huges',
+		genre: 'teen'
 	},
 	{
 		title: 'Wonder',
@@ -59,7 +64,7 @@ let topMovies = [
 	{
 		title: 'Once Upon a Time in the West',
 		director: 'Sergio Leone',
-		genre: 'italo-western'
+		genre: 'epic film'
 	},
 	{
 		title: 'Chinatown',
