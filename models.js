@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 let movieSchema = mongoose.Schema({
 	Title: {type: String, required: true},
-	Genre: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genres' }],
-	Director: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Directors' }],
+	Genre: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genre' }],
+	Director: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Director' }],
 	Actors: [String],
 	ImagePath: String,
 	Featured: Boolean
