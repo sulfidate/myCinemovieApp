@@ -62,13 +62,13 @@ app.get('/', (req,res) => {
 	Email: String,
 	Birthday: Date
 }*/
-app.post('/users', 
+app.post('/users'/*, 
 	[
 		check('Username', 'Username is required').isLength({min: 5}),
 		check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
 		check('Password', 'Password is required').not().isEmpty(),
 		check('Email', 'Email does not appear to be valid').isEmail()
-	], (req, res) => {
+	]*/, (req, res) => {
 		
 		let errors = validationResult(req);
 		
