@@ -18,6 +18,8 @@ const express = require('express'),
 
 const app = express();
 
+const cors = require('cors');
+
 const passport = require('passport');
 require('./passport');
 
@@ -33,15 +35,14 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'https://mycinemoviedatabase.herokuapp.com'];
 
 app.use(cors({
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
-		if(allowedOrigins.indexOf(origin) === -1){ 
-			let message = 'The CORS policy for this application doesn\'t allow access from origin ' + origin;
-			return callback(new Error(message ), false); 
+		if(allowedOrigins.indexOf(origin) === -1){
+			let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+			return callback(new Error(message ), false);
 		}
 		return callback(null, true);
 	}
