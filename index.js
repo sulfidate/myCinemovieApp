@@ -26,13 +26,12 @@ let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'h
 
 // database connection
 // online
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // local
 /*mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
 	useNewUrlParser: true, useUnifiedTopology: true });*/
 
 app.use(cors(
-	/* implement when finally provide app
 	{
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
@@ -42,7 +41,7 @@ app.use(cors(
 		}
 		return callback(null, true);
 	}
-} */));
+} ));
 
 // GET requests
 app.get('/', (req,res) => {
