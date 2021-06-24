@@ -34,7 +34,7 @@ app.use(methodOverride());
 app.use(express.static('public'));
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions'];
+let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
 app.use(cors({
 	origin: (origin, callback) => {
