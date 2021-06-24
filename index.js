@@ -13,7 +13,8 @@ const express = require('express'),
 			app = express();
 			cors = require('cors');
 			passport = require('passport');
-			{ check, validationResult } = require('express-validator');
+
+const { check, validationResult } = require('express-validator');
 
 require('./passport');
 app.use(bodyParser.json());
