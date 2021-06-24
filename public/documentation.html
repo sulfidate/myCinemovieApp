@@ -205,6 +205,30 @@
 							</td>
 						</tr>
 						<tr>
+							<td>Allow existing users to login</td>
+							<td>/login</td>
+							<td>POST</td>
+							<td>KEY parameter for username and password.<br/>Example:<br/> 
+								https://myApp.domain..com/<span class="green">login?Username=testuser&Password=12345ABcd<br/>
+								</span>
+							</td>
+							<td>A JSON object holding data about the user, included hashed password and jwt-token. <br/>Example: <span class="green"><br/>
+								{<br/>
+								"user": {<br/>
+										"FavoriteMovies": [],<br/>
+										"_id": "60d4dfbb3f6d2e0015cc97c6",<br/>
+										"Username": "testuser",<br/>
+										"Password": "$2a$10$nVEwAHYrHxgImtfgPSafgeZFUq4ZOqpd9ZvqFz8oEns8gJGtK5HuK",<br/>
+										"Email": "user@mail.com",<br/>
+										"Birthday": "2001-01-01T00:00:00.000Z",<br/>
+										"__v": 0<br/>
+								},<br/>
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGYXZvcml0ZU1vdmllcyI6W10sIl9pZCI6IjYwZDRkZmJiM2Y2ZDJlMDAxNWNjOTdjNiIsIlVzZXJuYW1lIjoidGVzdHVzZXIiLCJQYXNzd29yZCI6IiQyYSQxMCRuVkV3QUhZckh4Z0ltdGZnUFNhZmdlWkZVcTRaT3FwZDladnFGejhvRW5zOGdKR3RLNUh1SyIsIkVtYWlsIjoidXNlckBtYWlsLmNvbSIsIkJpcnRoZGF5IjoiMjAwMS0wMS0wMVQwMDowMDowMC4wMDBaIiwiX192IjowLCJpYXQiOjE2MjQ1NjM4NzcsImV4cCI6MTYyNTE2ODY3Nywic3ViIjoidGVzdHVzZXIifQ.y3kQW_khqM_-bxrn8BEofF9w8lgZ1binp7_Pcd_uYNQ"
+						}<br/>
+								}</span>
+							</td>
+						</tr>
+						<tr>
 							<td>Allow users to update their user info (username)</td>
 							<td>/users/[Username]</td>
 							<td>PUT</td>
