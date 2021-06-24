@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 mongoose.connect( process.env.CONNECTION_URI, {
 	useNewUrlParser: true, useUnifiedTopology: true });
-/*mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
-	useNewUrlParser: true, useUnifiedTopology: true });*/
+// mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
+// 	useNewUrlParser: true, useUnifiedTopology: true });
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -18,14 +18,9 @@ const express = require('express'),
 
 const app = express();
 
-const passport = require('passport');
-require('./passport');
-
 const { check, validationResult } = require('express-validator');
 
 app.use(bodyParser.json());
-
-let auth = require('./auth')(app);
 
 app.use(morgan('common'));
 
@@ -34,7 +29,14 @@ app.use(methodOverride());
 app.use(express.static('public'));
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions'];
+
+let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
+
+let auth = require('./auth')(app);
+
+const passport = require('passport');
+require('./passport');
+
 
 app.use(cors({
 	origin: (origin, callback) => {
@@ -68,7 +70,6 @@ app.post('/users',
 		check('Password', 'Password is required').not().isEmpty(),
 		check('Email', 'Email does not appear to be valid').isEmail()
 	], (req, res) => {
-		
 		let errors = validationResult(req);
 		
 		if (!errors.isEmpty()) {
@@ -88,11 +89,11 @@ app.post('/users',
 						Email: req.body.Email,
 						Birthday: req.body.Birthday
 					})
-					.then((user) =>{res.status(201).json(user) })
-				.catch((error) => {
-					console.error(error);
-					res.status(500).send('Error: ' + error);
-				})
+					.then((user) =>{ res.status(201).json(user) })
+					.catch((error) => {
+						console.error(error);
+						res.status(500).send('Error: ' + error);
+					});
 			}
 		})
 		.catch((error) => {
@@ -112,7 +113,20 @@ app.post('/users',
 	(required)
 	Birthday: Date
 }*/
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.put('/users/:Username', 
+	[
+		check('Username', 'Username is required').isLength({min: 5}),
+		check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+		check('Password', 'Password is required').not().isEmpty(),
+		check('Email', 'Email does not appear to be valid').isEmail()
+	],
+	passport.authenticate('jwt', { session: false }), (req, res) => {
+		let errors = validationResult(req);
+		
+		if (!errors.isEmpty()) {
+			return res.status(422).json({ errors: errors.array() });
+		}
+
 	Users.findOneAndUpdate({ Username: req.params.Username }, { $set: 
 		{
 			Username: req.body.Username,
@@ -186,9 +200,9 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
 		.then((movies) => {
 			res.status(201).json(movies);
 		})
-		.catch((err) => {
-			console.error(err);
-			res.status(500).send('Error: ' + err);
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
 		});
 });
 
