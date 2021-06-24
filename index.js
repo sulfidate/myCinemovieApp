@@ -1,3 +1,10 @@
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+mongoose.connect('process.env.CONNECTION_URI', {
+	useNewUrlParser: true, useUnifiedTopology: true });
+/*mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
+	useNewUrlParser: true, useUnifiedTopology: true });*/
+
 const Movies = Models.Movie;
 const Users = Models.User;
 const Genres = Models.Genre;
@@ -8,32 +15,29 @@ const express = require('express'),
 			uuid = require('uuid'),
 			bodyParser = require('body-parser'), 
 			methodOverride = require('method-override');
-			mongoose = require('mongoose');
-			Models = require('./models.js');
-			app = express();
-			cors = require('cors');
-			passport = require('passport');
-			{ check, validationResult } = require('express-validator');
 
+const app = express();
+
+const cors = require('cors');
+
+const passport = require('passport');
 require('./passport');
+
+const { check, validationResult } = require('express-validator');
+
 app.use(bodyParser.json());
-app.use(morgan('common'));
-app.use(methodOverride());
-app.use(express.static('public'));
 
 let auth = require('./auth')(app);
+
+app.use(morgan('common'));
+
+app.use(methodOverride());
+
+app.use(express.static('public'));
+
 let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
-// database connection
-// online
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-// local
-/*mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
-	useNewUrlParser: true, useUnifiedTopology: true });*/
-
-app.use(cors(
-	/* implement when finally provide app
-	{
+app.use(cors({
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
 		if(allowedOrigins.indexOf(origin) === -1){
@@ -42,7 +46,7 @@ app.use(cors(
 		}
 		return callback(null, true);
 	}
-} */));
+}));
 
 // GET requests
 app.get('/', (req,res) => {
@@ -72,30 +76,30 @@ app.post('/users',
 			return res.status(422).json({ errors: errors.array() });
 		}
 		
-		let hashedPassword = Users.hashPassword(req.body.Password);
-		Users.findOne({ Username: req.body.Username })
-			.then((user) => {
-				if (user) {
-					return res.status(400).send(req.body.Username + ' already exists ');
-				} else {
-					Users
-						.create({
-							Username: req.body.Username,
-							Password: hashedPassword,
-							Email: req.body.Email,
-							Birthday: req.body.Birthday
-						})
-						.then((user) =>{res.status(201).json(user) })
-						.catch((error) => {
-							console.error(error);
-							res.status(500).send('Error: ' + error);
-						})
-					}
-				})
+	let hashedPassword = Users.hashPassword(req.body.Password);
+	Users.findOne({ Username: req.body.Username })
+		.then((user) => {
+			if (user) {
+				return res.status(400).send(req.body.Username + ' already exists ');
+			} else {
+				Users
+					.create({
+						Username: req.body.Username,
+						Password: hashedPassword,
+						Email: req.body.Email,
+						Birthday: req.body.Birthday
+					})
+					.then((user) =>{res.status(201).json(user) })
 				.catch((error) => {
 					console.error(error);
 					res.status(500).send('Error: ' + error);
-				});
+				})
+			}
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
+		});
 });
 
 // Update user's Info, by username
@@ -109,23 +113,7 @@ app.post('/users',
 	(required)
 	Birthday: Date
 }*/
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
-
-	[
-		check('Username', 'Username is required').isLength({min: 5}),
-		check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-		check('Password', 'Password is required').not().isEmpty(),
-		check('Email', 'Email does not appear to be valid').isEmail()
-	], (req, res) => {
-
-	let errors = validationResult(req);
-
-	if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-	}
-	
-	let hashedPassword = Users.hashPassword(req.body.Password);
-
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Users.findOneAndUpdate({ Username: req.params.Username }, { $set: 
 		{
 			Username: req.body.Username,
