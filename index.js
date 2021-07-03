@@ -195,12 +195,12 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 // Get all Movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies', /*passport.authenticate('jwt', { session: false }),*/function (req, res) => {
 	Movies.find()
-		.then((movies) => {
+		.then(function (movies) => {
 			res.status(201).json(movies);
 		})
-		.catch((error) => {
+		.catch(function (error) => {
 			console.error(error);
 			res.status(500).send('Error: ' + error);
 		});
