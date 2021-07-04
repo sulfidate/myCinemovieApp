@@ -18,7 +18,7 @@ const express = require('express'),
 
 const app = express();
 
-const cors = require('cors');
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
 app.use(cors({
 	origin: (origin, callback) => {
@@ -33,16 +33,13 @@ app.use(cors({
 
 const { check, validationResult } = require('express-validator');
 
-
-
+const cors = require('cors');
 
 app.use(morgan('common'));
 
 app.use(methodOverride());
 
 app.use(express.static('public'));
-
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
 let auth = require('./auth')(app);
 
