@@ -20,6 +20,8 @@ const app = express();
 
 const { check, validationResult } = require('express-validator');
 
+const cors = require('cors');
+
 app.use(bodyParser.json());
 
 app.use(morgan('common'));
@@ -27,8 +29,6 @@ app.use(morgan('common'));
 app.use(methodOverride());
 
 app.use(express.static('public'));
-
-const cors = require('cors');
 
 let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
