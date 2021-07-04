@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-mongoose.connect(process.env.CONNECTION_URI, {
+mongoose.connect(process.env.MongoDB_URL, {
 	useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
 // 	useNewUrlParser: true, useUnifiedTopology: true });
@@ -30,7 +30,7 @@ app.use(express.static('public'));
 
 const cors = require('cors');
 
-let allowedOrigins = ['http://localhost:8080', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://sulfidate.solutions', 'https://mycinemoviedatabase.herokuapp.com'];
 
 let auth = require('./auth')(app);
 
