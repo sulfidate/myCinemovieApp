@@ -22,7 +22,6 @@ const { check, validationResult } = require('express-validator');
 
 const cors = require('cors');
 
-app.use(bodyParser.json());
 
 app.use(morgan('common'));
 
@@ -48,6 +47,9 @@ app.use(cors({
 		return callback(null, true);
 	}
 }));
+
+app.use(bodyParser.json());
+
 
 // GET requests
 app.get('/', (req,res) => {
