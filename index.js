@@ -20,6 +20,8 @@ const app = express();
 
 const cors = require('cors');
 
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com'];
+
 app.use(cors({
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
@@ -39,7 +41,6 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com'];
 
 let auth = require('./auth')(app);
 
