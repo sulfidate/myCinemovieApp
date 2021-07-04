@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-mongoose.connect(/*'https://mycinemoviedatabase.herokuapp.com/'*/process.env.MongoDB_URL, {
+mongoose.connect(process.env.MongoDB_URL, {
 	useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
 // 	useNewUrlParser: true, useUnifiedTopology: true });
