@@ -18,7 +18,7 @@ const express = require('express'),
 
 const app = express();
 
-app.use(cors({
+app.use(Cors({
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
 		if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
