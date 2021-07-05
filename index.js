@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-mongoose.connect('mongodb+srv://sulfidate:8397%40MongoDB@clustermydb.khetf.mongodb.net/myCineMoviesDB?retryWrites=true&w=majority&ssl=true', {
+// mongoose.connect('mongodb+srv://sulfidate:8397%40MongoDB@clustermydb.khetf.mongodb.net/myCineMoviesDB?retryWrites=true&w=majority&ssl=true', {
+// 	useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.'MongoDB_URL', {
 	useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect(process.env.MongoDB_URL, {
-	// useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect('mongodb://localhost:27017/myCinemoviesDB', {
 // 	useNewUrlParser: true, useUnifiedTopology: true });
 
