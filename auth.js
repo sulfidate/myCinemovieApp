@@ -21,7 +21,9 @@ module.exports = (router) => {
 		passport.authenticate('local', { session: false }, (error, user, info) => {
 			if (error || !user) {
 				return res.status(400).json({
-					console.log(error)
+					message: 'Something is not right',
+					user: user,
+					error: error
 				});
 			}
 			req.login(user, { session: false }, (error) => {
