@@ -25,6 +25,7 @@ module.exports = (router) => {
 					user: user
 				});
 				return res.text().then(text => {throw new Error(text)})
+				console.log(text, error,user, info);
 			}
 			req.login(user, { session: false }, (error) => {
 				if (error) {
