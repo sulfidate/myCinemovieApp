@@ -23,9 +23,10 @@ module.exports = (router) => {
 				return res.status(400).json({
 					message: 'Something is not right',
 					user: user,
-					error: {error},
+					error: {error,
 					info: info
 				});
+				console.log(user, info, error);
 			}
 			req.login(user, { session: false }, (error) => {
 				if (error) {
@@ -33,6 +34,7 @@ module.exports = (router) => {
 				}
 				let token = generateJWTToken(user.toJSON());
 				return res.json({ user, token });
+				console.log(user, token, info, error);
 			});
 		})(req, res);
 	});
