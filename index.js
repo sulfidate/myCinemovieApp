@@ -41,14 +41,12 @@ app.use(express.static('public'));
 
 let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com'];
 
+app.use(bodyParser.json());
+
 let auth = require('./auth')(app);
 
 const passport = require('passport');
 require('./passport');
-
-
-app.use(bodyParser.json());
-
 
 // GET requests
 app.get('/', (req,res) => {
