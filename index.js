@@ -263,6 +263,19 @@ app.get('/genres/:Name', passport.authenticate('jwt', { session: false }), (req,
 	});	
 });
 
+// Get all Directors
+app.get('/directors', passport.authenticate('jwt', { session: false }), (req, res) => {
+	Directors.find()
+		.then((directors) => {
+			res.status(201).json(directors);
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
+		});
+});
+
+
 // Get director by name
 app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Directors.findOne({ Name: req.params.Name })
