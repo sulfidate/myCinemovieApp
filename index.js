@@ -145,6 +145,23 @@ app.put('/users/:Username',
 	});
 });
 
+// Get user account info
+app.get('/users/:Username',
+	passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		Users.findOne({ Username: req.params.Username })
+			.then((user) => {
+				res.json(user);
+			})
+			.catch((err) => {
+				console.error(err);
+				res.status(500).send("Error: " + err);
+			});
+	}
+);
+
+
+
 // Add movie to user list of favorites
 app.patch('/users/:Username/Favorites/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Users.findOneAndUpdate({ Username: req.params.Username }, {
