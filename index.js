@@ -41,7 +41,7 @@ app.use(express.static('public'));
 
 // let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'https://www.themoviedb.org'];
 
-let allowedOrigins = [*];
+let allowedOrigins = ['*'];
 
 app.use(bodyParser.json());
 
