@@ -39,7 +39,7 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'www.themoviedb.org' ];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'http://www.themoviedb.org/' ];
 
 app.use(bodyParser.json());
 
