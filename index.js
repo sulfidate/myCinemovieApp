@@ -39,7 +39,7 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'https://www.themoviedb.org'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'https://www.themoviedb.org' ];
 
 app.use(bodyParser.json());
 
@@ -211,8 +211,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 // Get all Movies
-app.get("/movies/allow-cors", function (req, res) {
-	response.set('Access-Control-Allow-Origin', '*')
+app.get("/movies", function (req, res) {
 	Movies.find()
 		.then(function (movies) {
 			res.status(201).json(movies);
