@@ -49,8 +49,7 @@ const passport = require('passport');
 require('./passport');
 
 // GET requests
-app.get('/allow-cors', (req,res) => {
-	response.set('Access-Control-Allow-Origin', '*')
+app.get('/', (req,res) => {
 	res.send('Welcome to my Cinemovie Database (myCMDb)');
 });
 
@@ -212,7 +211,8 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 // Get all Movies
-app.get("/movies", function (req, res) {
+app.get("/movies/allow-cors", function (req, res) {
+	response.set('Access-Control-Allow-Origin', '*')
 	Movies.find()
 		.then(function (movies) {
 			res.status(201).json(movies);
