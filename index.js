@@ -39,9 +39,7 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-// let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'https://www.themoviedb.org'];
-
-let allowedOrigins = ["*"];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com', 'https://www.themoviedb.org'];
 
 app.use(bodyParser.json());
 
@@ -51,7 +49,8 @@ const passport = require('passport');
 require('./passport');
 
 // GET requests
-app.get('/', (req,res) => {
+app.get('/allow-cors', (req,res) => {
+	response.set('Access-Control-Allow-Origin', '*')
 	res.send('Welcome to my Cinemovie Database (myCMDb)');
 });
 
