@@ -39,7 +39,7 @@ app.use(methodOverride());
 
 app.use(express.static('public'));
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:4200', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com/movies', 'https://www.themoviedb.org', 'https://sulfidate.github.io/myCinemovieApp-Angular-client/' ];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:4200', 'http://localhost:1234', 'https://mycinemoviedatabase.herokuapp.com/movies', 'https://www.themoviedb.org', 'https://sulfidate.github.io/welcome' ];
 
 app.use(bodyParser.json());
 
