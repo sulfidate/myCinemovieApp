@@ -119,13 +119,14 @@ app.put('/users/:Username',
 		// check('Password', 'Password is required').not().isEmpty(),
 		// check('Email', 'Email does not appear to be valid').isEmail()
 	],
+	let hashedPassword = Users.hashPassword(req.body.Password);
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		let errors = validationResult(req);
 		
 		if (!errors.isEmpty()) {
 			return res.status(422).json({ errors: errors.array() });
 		}
-		let hashedPassword = Users.hashPassword(req.body.Password);
+		
 		
 	Users.findOneAndUpdate({ Username: req.params.Username }, { $set: 
 		{
