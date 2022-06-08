@@ -16,7 +16,7 @@ This Project uses:
 - Node.js
 - Express
 
-## Documentation - Link: [https://mycinemoviedatabase.herokuapp.com/documentation.html](https://mycinemoviedatabase.herokuapp.com/)
+## Documentation - Link: [https://mycinemoviedatabase.herokuapp.com/documentation.html](https://mycinemoviedatabase.herokuapp.com/documentation.html)
 
 
 ## Feature Requirements
