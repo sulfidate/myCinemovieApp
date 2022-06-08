@@ -16,7 +16,7 @@ This Project uses:
 - Node.js
 - Express
 
-## Documentation - Link: https://github.com/sulfidate/myCinemovieApp/blob/main/public/documentation.html
+## Documentation - Link: [https://mycinemoviedatabase.herokuapp.com/documentation.html](https://mycinemoviedatabase.herokuapp.com/)
 
 
 ## Feature Requirements
