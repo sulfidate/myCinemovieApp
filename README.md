@@ -54,7 +54,9 @@ This Project uses:
 
 ## How to install and run the project
 
-To work with it as a developer, who wants to check my code, you need to install the dependencies like this:
+### To work with it as a developer...
+
+who wants to look up my code you need to install the dependencies like this:
 
 - Clone or download repository ...
 
@@ -69,7 +71,9 @@ To work with it as a developer, who wants to check my code, you need to install 
 - Run the project ...
   - npm start
 
-To use the app as a movie enthusiast, who wants to search for movies you need to go to the live-view:
+### To use the app as a movie enthusiast...
+
+who wants to search for movie information you need to go to the live-view:
 
 React app: https://sulfidate.github.io/myCinemovieApp-client/
 <br/>
@@ -78,7 +82,7 @@ Angular app: https://sulfidate.github.io/myCinemovieApp-Angular-client/welcome
 Then register as a new user and login to get a jwt token, which you can use to access the API.
 
 ... have fun!
-<br/>
+<br/><br/>
 
 ## Feature Requirements
 
